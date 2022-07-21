@@ -1,5 +1,5 @@
 # import the function that will return an instance of a connection
-from flask_mysql.Users_Crud.mysqlconnection import connectToMySQL
+from flask_mysql.users_crud.mysqlconnection import connectToMySQL
 # model the class after the friend table from our database
 class Friend:
     # ... other class methods
