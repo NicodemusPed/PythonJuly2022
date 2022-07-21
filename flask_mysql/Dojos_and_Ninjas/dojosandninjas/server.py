@@ -1,20 +1,11 @@
-from flask import Flask, render_template, redirect, request
+from flask_app import app
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return redirect('/dojos')
-
-@app.route('/dojos')
-def dojos():
-    print ('Nicodemus')
-    return render_template("dojos.html")
+from flask_app.controllers import dojos
 
 
 
 if __name__ == "__main__":
-    
     app.run(debug=True)
+
+
 
