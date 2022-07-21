@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1></h1>
+    <form method="POST" action="/user/process_registration">
+        <div>
+            <label>
+                First name:
+            </label>
+            <input type="text" name="first_name" /> 
+        </div>
+        </div>
+        <div>
+            <label>
+                Last name:
+            </label>
+            <input type="text" name="last_name" />
+        </div>
+        </div>
+        <div>
+            <label>
+                Email:
+            </label>
+            <input type="text" name="email" /> 
+        </div>
+        </div>
+        <div>
+            <label>
+                Password:
+            </label>
+            <input type="password" name="password" />
+        </div>
+        </div>
+        <div>
+            <label>
+                Password confirmation:
+            </label>
+            <input type="password" name="password_confirmation" />
+        </div>
+        <button>Submit</button>
+    </form>
+    <form method="POST" action="/user/process_login">
+        <div>
+            <label>
+                Email:
+            </label>
+            <input type="text" name="email" /> 
+        </div>
+        <div>
+            <label>
+                Password:
+            </label>
+            <input type="password" name="password" />
+        </div>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

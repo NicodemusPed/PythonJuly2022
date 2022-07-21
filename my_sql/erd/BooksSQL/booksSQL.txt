@@ -1,0 +1,24 @@
+SELECT * FROM users;
+
+INSERT INTO users (name, email, password, created_at, updated_at)
+VALUES ("John", "jo@email.com", "Passwor123", NOW(), NOW()),("Mike","mkr@email.com", "password", NOW(), NOW()), ("Paula","pa@email.com","pass123", NOW(), NOW()),
+("Fitz", "fitz@email.com", "123pass", NOW(), NOW()), ("toammy","toam@email.com","789pass", NOW(), NOW());
+
+
+INSERT INTO books (title, num_of_pages, created_at, updated_at)
+VALUES ("C_Sharp", 560, NOW(), NOW()), ("Java", 698, NOW(), NOW()), ("Python", 1120, NOW(), NOW()),("PHP", 234, NOW(), NOW()), ("Ruby", 436, NOW(), NOW());
+UPDATE books SET title="C#" WHERE ID=1;
+
+UPDATE users SET name="Bill" WHERE ID=4;
+
+INSERT INTO favorites (user_id, book_id)
+Values (1,1), (1,2), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4), (4,5);
+
+SELECT users.name FROM users JOIN favorites ON users.id = user_id JOIN books ON favorites.book_id = books.id WHERE books.id = 3;
+DELETE FROM favorites WHERE book_id = 3 AND user_id = 2;
+INSERT INTO favorites (user_id, book_id)
+VALUES (5, 2);
+
+SELECT title FROM books JOIN favorites as faves on faves.book_id = books.id;
+SELECT name FROM users JOIN favorites on users.id = favorites.user_id
+WHERE favorites.book_id = 5;

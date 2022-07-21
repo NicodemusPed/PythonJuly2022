@@ -1,0 +1,8 @@
+INSERT INTO dojos (name) VALUES ('right'), ('center'), ('left');
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM dojos;
+
+INSERT INTO dojos (name) VALUES ('Top'), ('middle'), ('bottom');
+

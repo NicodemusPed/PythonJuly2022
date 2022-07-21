@@ -1,0 +1,14 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+#counter{
+    height: 100px;
+    width: 200px;
+    background-color: aqua;
+    font-size: 1rem;
+    color: black;
+    outline: 5px dashed rgb(215, 215, 10);
+} */
