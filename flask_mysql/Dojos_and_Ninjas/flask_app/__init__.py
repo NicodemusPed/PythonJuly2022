@@ -2,5 +2,5 @@ from flask import Flask
 
 app = Flask(__name__)
 
-app.secret_key = "ohboy"
+app.secret_key = "ugh"
 
