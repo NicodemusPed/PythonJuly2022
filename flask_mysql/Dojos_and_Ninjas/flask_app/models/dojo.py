@@ -10,10 +10,10 @@ class Dojo:
     def get_all(cls):
         query = "SELECT * FROM dojos;"
         results = connectToMySQL('dojos_and_ninjas').query_db(query)
-        users = [ ]
+        dojos = [ ]
         for u in results:
-            users.append( cls(u) )
-        return users
+            dojos.append( cls(u) )
+        return dojos
 
     @classmethod
     def save(cls, data):

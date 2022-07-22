@@ -1,2 +1,0 @@
-from mysqlconnection import connectToMySQL
-
