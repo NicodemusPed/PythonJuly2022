@@ -3,7 +3,7 @@ class MySQLConnection:
     def __init__(self, db):
         connection = pymysql.connect(host = 'localhost',
                                     user = 'root',
-                                    password = 'root', 
+                                    password = 'root',
                                     db = db,
                                     charset = 'utf8mb4',
                                     cursorclass = pymysql.cursors.DictCursor,
@@ -33,7 +33,7 @@ class MySQLConnection:
                 return False
             finally:
 
-                self.connection.close() 
+                self.connection.close()
 
 def connectToMySQL(db):
     return MySQLConnection(db)
