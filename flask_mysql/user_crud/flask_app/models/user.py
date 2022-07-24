@@ -11,8 +11,6 @@ class User:
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
     
-
-
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
