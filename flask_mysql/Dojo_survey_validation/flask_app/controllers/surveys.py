@@ -1,5 +1,5 @@
 from server import app
-from flask import render_template, session, request, redirect
+from flask import render_template, session, request, redirect, falsh
 from flask_app.models.survey import Dojo
 
 
