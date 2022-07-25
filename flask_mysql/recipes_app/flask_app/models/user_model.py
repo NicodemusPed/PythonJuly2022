@@ -23,7 +23,7 @@ class User:
                 return False
 
         @classmethod
-        def create( cls, data)
+        def create( cls, data):
             query = "INSERT INTO users( first_name, last_name, email, password )"
             query = "VALUES ( %(first_name)s, %(last_names)s, %(email)s, %(password)s ); "
             result = connectToMySQL ( DATABASE ).query_db( query, data )
