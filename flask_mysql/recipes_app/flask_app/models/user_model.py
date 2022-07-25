@@ -12,22 +12,24 @@ class User:
         self.created_at = data[ 'created_at' ]
         self.updated_at = data[ 'updated_at' ]
 
-        @classmethod
-        def get_one_to_validate_email( cls, data ):
-            query = "SELECT * FROM users WHERE email = %(email)s;"
+    @classmethod
+    def get_one_to_validate_email( cls, data ):
+        query = "SELECT * FROM users WHERE email = %(email)s;"
 
-            result = connectToMySQL( DATABASE ).query_db( query, data )
-            if len( result ) == 0:
-                return True
-            else:
-                return False
+        result = connectToMySQL( DATABASE ).query_db( query, data )
+        
+        if len( result ) > 0:
+            current_user = cls( result[0] )
+            return current_user
+        else:
+            return None
 
-        @classmethod
-        def create( cls, data):
-            query = "INSERT INTO users( first_name, last_name, email, password )"
-            query = "VALUES ( %(first_name)s, %(last_names)s, %(email)s, %(password)s ); "
-            result = connectToMySQL ( DATABASE ).query_db( query, data )
-            return result
+    @classmethod
+    def create( cls, data):
+        query = "INSERT INTO users( first_name, last_name, email, password )"
+        query = "VALUES ( %(first_name)s, %(last_names)s, %(email)s, %(password)s ); "
+        result = connectToMySQL ( DATABASE ).query_db( query, data )
+        return result
 
 
     @staticmethod

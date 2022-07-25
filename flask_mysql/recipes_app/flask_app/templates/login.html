@@ -53,6 +53,7 @@
     </form>
     <form>
         <h1>Login</h1>
+        <form method ="POST" action="/user/login"></form>
         <div>
             <label>Email:</label>
             <input type="text" name="email" /> 
@@ -61,6 +62,9 @@
             <label>Password:</label>
             <input type="password" name="password" />
         </div>
+        {% for message in get_flashed_messages( category_filter=[ 'error_login_credentials' ] ) %}
+        {{ message }}
+        {% endofor %}
         <button>Submit</button>
     </form>
 
