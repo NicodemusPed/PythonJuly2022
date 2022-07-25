@@ -8,58 +8,62 @@
 </head>
 
 <body>
-    <h1></h1>
-    <form method="POST" action="/user/process_registration">
+    <h1>Register</h1>
+    <form method="POST" action="/user/registration">
         <div>
-            <label>
-                First name:
-            </label>
-            <input type="text" name="first_name" /> 
+            <label>First name:</label>
+            <input type="text" name="first_name" />
+            {% for message in get_flashed_messages( category_filter=[ 'error_registration_first_name' ] ) %}
+                {{ message }}
+            {% endofor %}
         </div>
         </div>
         <div>
-            <label>
-                Last name:
-            </label>
+            <label>Last name:</label>
             <input type="text" name="last_name" />
+            {% for message in get_flashed_messages( category_filter=[ 'error_registration_last_name' ] ) %}
+            {{ message }}
+        {% endofor %}
         </div>
         </div>
         <div>
-            <label>
-                Email:
-            </label>
-            <input type="text" name="email" /> 
+            <label>Email:</label>
+            <input type="text" name="email" />
+            {% for message in get_flashed_messages( category_filter=[ 'error_registration_email' ] ) %}
+            {{ message }}
+        {% endofor %}
         </div>
         </div>
         <div>
-            <label>
-                Password:
-            </label>
+            <label>Password:</label>
             <input type="password" name="password" />
+            {% for message in get_flashed_messages( category_filter=[ 'error_registration_password' ] ) %}
+            {{ message }}
+        {% endofor %}
         </div>
         </div>
         <div>
-            <label>
-                Password confirmation:
-            </label>
+            <label>Password confirmation:</label>
             <input type="password" name="password_confirmation" />
+            {% for message in get_flashed_messages( category_filter=[ 'error_registration_password_confirmation' ] ) %}
+            {{ message }}
+        {% endofor %}
         </div>
         <button>Submit</button>
     </form>
-    <form method="POST" action="/user/process_login">
+    <form>
+        <h1>Login</h1>
         <div>
-            <label>
-                Email:
-            </label>
+            <label>Email:</label>
             <input type="text" name="email" /> 
         </div>
         <div>
-            <label>
-                Password:
-            </label>
+            <label>Password:</label>
             <input type="password" name="password" />
         </div>
         <button>Submit</button>
     </form>
+
 </body>
 </html>
+

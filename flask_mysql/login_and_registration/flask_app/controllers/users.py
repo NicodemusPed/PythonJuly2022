@@ -12,16 +12,19 @@ def index():
 def register():
     if not User.validate_register(request.form):
         return redirect('/')
-    data ={
-        "first_name": request.form['first_name'],
-        "last_name": request.form['last_name'],
-        "email": request.form['email'],
-        "password": bcrypt.generate_password_hash(request.form['password'])
-    }
-    id = User.save(data)
-    session['user_id'] = id
 
-    return redirect('/dashboard')
+pw_hash = bcrypt.generate_password_hash(request.form['password'])
+print(pw_hash)
+
+data ={
+    "first_name": request.form['first_name'],
+    "last_name": request.form['last_name'],
+    "email": request.form['email'],
+    "password": bcrypt.generate_password_hash(request.form['password'])
+}
+user_id = User.save(data)
+session['user_id'] = id
+return redirect('/dashboard')
 
 @app.route('/login',methods=['POST'])
 def login():
