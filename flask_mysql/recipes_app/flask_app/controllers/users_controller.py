@@ -33,7 +33,7 @@ def process_registration():
 
 @app.route( '/user/login', methods = [ 'POST' ] ) 
 def process_login():
-    current_user = User.get_one_to_validate_email( request.form)
+    current_user = User.get_one_to_validate_email( request.form )
     if current_user !=None:
         if not bcrypt.check_password_hash( current_user.password, request.form[ 'password' ] ):
             flash( "Wrong credentials", "error_login_credentials" )

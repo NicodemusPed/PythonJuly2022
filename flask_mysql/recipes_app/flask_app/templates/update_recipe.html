@@ -17,8 +17,8 @@
     </p>
     <form method="POST" action="/recipe/update/{{current_recipe.id}}" >
         <div>
-            <label>Name:</label>
-            <input type="text" name="name" value="{{current_recipe.name}}" />
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" value="{{current_recipe.name}}" />
             {% for message in get_flashed_messages( category_filter=[ 'error_recipe_name' ] ) %}
                 {{ message }}
             {% endfor %}
@@ -38,8 +38,8 @@
             {% endfor %}
         </div>
         <div>
-            <label>Date cooked/made:</label>
-            <input type="date" name="cooked_date" />
+            <label for="deleted">Date cooked/made:</label>
+            <input id="deleted" type="date" name="cooked_date" />
             {% for message in get_flashed_messages( category_filter=[ 'error_recipe_cooked_date' ] ) %}
                 {{ message }}
             {% endfor %}
@@ -47,12 +47,12 @@
         <div>
             <label>Under 30 minutes:</label>
             <div>
-                Yes: <input type="radio" name="under_30" value="1" {% if current_recipe.under_30 == 1 %} checked {% endif %} />
-                No: <input type="radio" name="under_30" value="0" {% if current_recipe.under_30 == 0 %} checked {% endif %} />
+                Yes: <input placeholder="yes" type="radio" name="under_30" value="1" {% if current_recipe.under_30 == 1 %} checked {% endif %} />
+                No: <input placeholder="no" type="radio" name="under_30" value="0" {% if current_recipe.under_30 == 0 %} checked {% endif %} />
             </div>
         </div>
 
-            <button>Submit</button>
+            <button type="submit">Submit</button>
 </body>
 </html>
 

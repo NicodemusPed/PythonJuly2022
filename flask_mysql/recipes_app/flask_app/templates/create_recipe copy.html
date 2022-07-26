@@ -38,8 +38,8 @@
             {% endfor %}
         </div>
         <div>
-            <label for="date_cooked">Date cooked/made:</label>
-            <input id="date_cooked" type="date" name="cooked_date" />
+            <label for="delete">Date cooked/made:</label>
+            <input id="delete" type="date" name="cooked_date" />
             {% for message in get_flashed_messages( category_filter = [ 'error_recipe_cooked_date' ] ) %}
                 {{ message }}
             {% endfor %}

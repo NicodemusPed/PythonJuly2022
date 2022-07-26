@@ -34,10 +34,10 @@ class User:
     @staticmethod
     def validate_registration( data ):
         is_valid = True
-        if len( data[ 'first_name' ] )>2:
+        if len( data[ 'first_name' ] ) < 2:
             flash( "Your first name needs to have at least 2 characters", "error_registration_first_name" )
             is_valid = False
-        if len( data[ 'last_name' ] )>2:
+        if len( data[ 'last_name' ] )  < 2:
             flash( "Your last name needs to have at least 2 characters", "error_registration_last_name" )
             is_valid = False
         if not EMAIL_REGEX.match( data[ 'email' ] ):
