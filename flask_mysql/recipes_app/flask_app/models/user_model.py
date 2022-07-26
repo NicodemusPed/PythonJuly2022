@@ -1,4 +1,4 @@
-from flask_app.config.mysqlconnection import connectTOMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app import EMAIL_REGEX, DATABASE
 
@@ -17,9 +17,9 @@ class User:
         query = "SELECT * FROM users WHERE email = %(email)s;"
 
         result = connectToMySQL( DATABASE ).query_db( query, data )
-        
+
         if len( result ) > 0:
-            current_user = cls( result[0] )
+            current_user = cls( result[ 0 ] )
             return current_user
         else:
             return None
@@ -31,14 +31,13 @@ class User:
         result = connectToMySQL ( DATABASE ).query_db( query, data )
         return result
 
-
     @staticmethod
     def validate_registration( data ):
         is_valid = True
-        if len( data[ 'first_name' ] ) >2:
+        if len( data[ 'first_name' ] ) > 2:
             flash( "Your first name needs to have at least 2 characters", "error_registration_first_name" )
             is_valid = False
-        if len( data[ 'last_name' ] ) >2:
+        if len( data[ 'last_name' ] ) > 2:
             flash( "Your last name needs to have at least 2 characters", "error_registration_last_name" )
             is_valid = False
         if not EMAIL_REGEX.match( data[ 'email' ] ):

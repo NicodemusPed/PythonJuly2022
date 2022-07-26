@@ -8,31 +8,31 @@
 </head>
 
 <body>
-    <h1>Add a new recipe!</h1>
+    <h1>Edit a recipe!</h1>
     <p>
         <a href="/recipes">Back to recipes</a>
     </p>
     <p>
-        <a href="/user/logout">Logout</a>
+        <a>Logout</a>
     </p>
-    <form method="POST" action="/recipe/create" >
+    <form method="POST" action="/recipe/update/{{current_recipe.id}}" >
         <div>
             <label>Name:</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value="{{current_recipe.name}}" />
             {% for message in get_flashed_messages( category_filter=[ 'error_recipe_name' ] ) %}
                 {{ message }}
             {% endfor %}
         </div>
         <div>
             <label>Description:</label>
-            <testarea type="text" name="description"></testarea>
+            <testarea type="text" name="description">value="{{current_recipe.description}}"</testarea>
             {% for message in get_flashed_messages( category_filter=[ 'error_recipe_description' ] ) %}
                 {{ message }}
             {% endfor %}
         </div>
         <div>
             <label>Instructions:</label>
-            <testarea type="text" name="instructions"></testarea>
+            <testarea type="text" name="instructions">value="{{current_recipe.instructions}}"</testarea>
             {% for message in get_flashed_messages( category_filter=[ 'error_recipe_instructions' ] ) %}
                 {{ message }}
             {% endfor %}
@@ -47,13 +47,16 @@
         <div>
             <label>Under 30 minutes:</label>
             <div>
-                Yes: <input type="radio" name="under_30" value="1" checked />
-                No: <input type="radio" name="under_30" value="0"  />
+                Yes: <input type="radio" name="under_30" value="1" {% if current_recipe.under_30 == 1 %} checked {% endif %} />
+                No: <input type="radio" name="under_30" value="0" {% if current_recipe.under_30 == 0 %} checked {% endif %} />
             </div>
         </div>
 
             <button>Submit</button>
 </body>
 </html>
+
+
+
 
 

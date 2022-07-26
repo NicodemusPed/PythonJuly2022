@@ -35,7 +35,7 @@ def process_registration():
 def process_login():
     current_user = User.get_one_to_validate_email( request.form)
     if current_user !=None:
-        if not bcrypt.check_password_hash( current_user.password, request.form[ 'password'] ):
+        if not bcrypt.check_password_hash( current_user.password, request.form[ 'password' ] ):
             flash( "Wrong credentials", "error_login_credentials" )
             return redirect( '/' )
 
@@ -47,6 +47,10 @@ def process_login():
     else:
         flash( "Wrong credentials", "error_login_credentials" )
         return redirect( '/' )
+
+@app.route( '/user/logout' )
+def process_logout():
+    return redirect( '/' )
 
 
 

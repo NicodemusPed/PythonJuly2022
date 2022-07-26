@@ -1,4 +1,5 @@
-from flask_app.config.mysqlconnection import connectTOMySQL
+from unittest import result
+from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app import DATABASE
 from flask_app.models.user_model import User
@@ -21,13 +22,13 @@ class Recipe:
         query = " INSERT INTO recipes( name, description, instructions, cooked_date, under_30, user_id) "
         query += "VALUES( %(name)s, %(description)s, %(instruction)s, %(cooked_date)s, %(under_30)s, %(user_id)s )";
 
-        return connectTOMySQL( DATABASE ).query_db( query, data )
+        return connectToMySQL( DATABASE ).query_db( query, data )
 
     @classmethod
     def get_all_with_users( cls ):
         query = "SELECT * FROM recipes JOIN users ON recipes.user_id = usrs.id; "
 
-        results = connectTOMySQL( DATABASE ).query_db( query )
+        results = connectToMySQL( DATABASE ).query_db( query )
         list_recipes = [ ]
         for row in results:
             current_recipe = cls( row )
@@ -41,6 +42,37 @@ class Recipe:
             current_recipe.user = current_user
             list_recipes.append( current_recipe )
         return list_recipes
+
+    @staticmethod
+    def get_one_with_user( cls, data ):
+        query = " SELECT * FROM recipes JOIN users ON recipies.user._id = users.id WHERE recipes.id = %(id)s;"
+
+        result = connectToMySQL( DATABASE ).query_db( query, data )
+
+        if len( result ) > 0:
+            current_recipe = cls( result[ 0 ] )
+            user_data = {
+
+                **result[ 0 ],
+                "created_at" : result[ 0 ] [ 'users.created_at' ],
+                "udated_at" : result[ 0 ] [ 'users.updated_at' ],
+                "id" : result[ 0 ] [ 'users.id' ]
+            }
+            current_recipe.user = User( user_data )
+            return current_recipe
+        else:
+            return None
+
+    @classmethod
+    def update_one( cls, data ):
+        query = " UPDATE recipes SET name = %(name)s, description = %(description)s, instructions = %(intstructions)s, cooked_date = %(cooked_date)s, under_30 = %(under_30)s, user_id = %(user_id)s, WHERE id = %(id)s;"
+
+        return connectToMySQL( DATABASE ).query_db( query, data )
+
+    @classmethod
+    def delete_one( cls, data ):
+        query = "DELETE FROM recipes WHERE id = %(id)s;"
+        return connectToMySQL( DATABASE ).query_db( query, data )
 
     @staticmethod
     def validate_recipe( data ):

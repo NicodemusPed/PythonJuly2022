@@ -15,39 +15,35 @@
             <input type="text" name="first_name" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_first_name' ] ) %}
                 {{ message }}
-            {% endofor %}
-        </div>
+            {% endfor %}
         </div>
         <div>
             <label>Last name:</label>
             <input type="text" name="last_name" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_last_name' ] ) %}
-            {{ message }}
-        {% endofor %}
-        </div>
+                {{ message }}
+            {% endfor %}
         </div>
         <div>
             <label>Email:</label>
             <input type="text" name="email" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_email' ] ) %}
-            {{ message }}
-        {% endofor %}
-        </div>
+                {{ message }}
+            {% endfor %}
         </div>
         <div>
             <label>Password:</label>
             <input type="password" name="password" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_password' ] ) %}
-            {{ message }}
-        {% endofor %}
-        </div>
+                { message }}
+            {% endfor %}
         </div>
         <div>
             <label>Password confirmation:</label>
             <input type="password" name="password_confirmation" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_password_confirmation' ] ) %}
             {{ message }}
-        {% endofor %}
+        {% endfor %}
         </div>
         <button>Submit</button>
     </form>
@@ -56,7 +52,7 @@
         <form method ="POST" action="/user/login"></form>
         <div>
             <label>Email:</label>
-            <input type="text" name="email" /> 
+            <input type="text" name="email" />
         </div>
         <div>
             <label>Password:</label>
@@ -64,7 +60,7 @@
         </div>
         {% for message in get_flashed_messages( category_filter=[ 'error_login_credentials' ] ) %}
         {{ message }}
-        {% endofor %}
+        {% endfor %}
         <button>Submit</button>
     </form>
 
