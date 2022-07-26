@@ -38,7 +38,7 @@ def display_one( id ):
     current_recipe = Recipe.get_one_with_user( data )
     return render_template( "recipe.html", current_recipe = current_recipe )
 
-@app.route( '/recip[es/<int:id>/update' )
+@app.route( '/recipes/<int:id>/update' )
 def display_update_recipe( id ):
     if 'email' not in session:
         return redirect( '/' )

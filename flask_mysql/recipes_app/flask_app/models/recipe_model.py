@@ -89,13 +89,13 @@ class Recipe:
         if data[ 'cooked_date' ] == "":
             flash( "Cooked date must not be empty", "error_recipe_cooked_date" )
             is_valid = False
-        if len( data[ 'name' ] ) < 3:
+        if len( data[ 'name' ] )<3:
             flash( "Name must be at least 3 characters long", "error_recipe_name" )
             is_valid = False
-        if len( data[ 'description' ] ) < 3:
+        if len( data[ 'description' ] )<3:
             flash( "Description must be at least 3 characters long", "error_recipe_description" )
             is_valid = False
-        if len( data[ 'instructions' ] ) <3:
+        if len( data[ 'instructions' ] )<3:
             flash( "Instructions must be at least 3 characters long", "error_recipe_instructions" )
             is_valid = False
         return is_valid
