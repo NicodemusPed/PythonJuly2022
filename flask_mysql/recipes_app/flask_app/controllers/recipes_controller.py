@@ -28,7 +28,7 @@ def create_recipe():
     Recipe.create( data )
     return redirect( '/recipes' )
 
-@app.route( 'recipes/<int:id>' )
+@app.route( '/recipes/<int:id>' )
 def display_one( id ):
     if 'email' not in session:
         return redirect( '/' )
