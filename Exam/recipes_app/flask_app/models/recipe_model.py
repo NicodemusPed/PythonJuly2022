@@ -26,7 +26,7 @@ class Recipe:
 
     @classmethod
     def get_all_with_users( cls ):
-        query = "SELECT * FROM recipes JOIN users ON recipes.user_id = usrs.id; "
+        query = "SELECT * FROM recipes JOIN users ON recipes.user_id = users.id; "
 
         results = connectToMySQL( DATABASE ).query_db( query )
         list_recipes = [ ]
@@ -45,7 +45,7 @@ class Recipe:
 
     @staticmethod
     def get_one( cls, data ):
-        query = " SELECT * FROM recipes JOIN users ON recipes.user._id = users.id WHERE recipes.id = %(id)s;"
+        query = " SELECT * FROM recipes JOIN users ON recipes.user._id = user.id WHERE recipes.id = %(id)s;"
 
         result = connectToMySQL( DATABASE ).query_db( query, data )
 
