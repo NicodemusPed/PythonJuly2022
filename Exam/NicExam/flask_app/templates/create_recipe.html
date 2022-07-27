@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New recipe</title>
+</head>
+
+<body>
+    <h1>Put up car for sale</h1>
+    <p>
+        <button href="/dashboard">Dashboard</button>
+    </p>
+    <p>
+        <button href="/user/logout">Logout</button>
+    </p>
+    <form method="POST" action="/recipe/create" >
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" />
+            {% for message in get_flashed_messages( category_filter = [ 'error_recipe_name' ] ) %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        <div>
+            <label for="desc">Description:</label>
+            <textarea id="desc" type="text" name="description"></textarea>
+            {% for message in get_flashed_messages( category_filter = [ 'error_recipe_description' ] ) %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        <div>
+            <label for="inst">Instructions:</label>
+            <textarea id="inst" type="text" name="instructions"></textarea>
+            {% for message in get_flashed_messages( category_filter = [ 'error_recipe_instructions' ] ) %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        <div>
+            <label for="date_cooked">Date cooked/made:</label>
+            <input id="date_cooked" type="date" name="cooked_date" />
+            {% for message in get_flashed_messages( category_filter = [ 'error_recipe_cooked_date' ] ) %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        <div>
+            <label>Under 30 minutes:</label>
+            <div>
+                Yes: <input placeholder="yes" type="radio" name="under_30" value="1" checked />
+                No: <input placeholder="no" type="radio" name="under_30" value="0" />
+            </div>
+        </div>
+
+            <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Welcome to Car Dealz, {{ session[ 'first_name' ] }}</h1>
+    <p>
+        <a href="/user/logout">Logout</a>
+    </p>
+    <div>
+        Cars for Sale:
+    </div>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Seller</th>
+            <th>Actions</th>
+        </tr>
+        {% for dashboard in list_recipes: %}
+        <tr>
+        <td>{{dashboard.name}}</td>
+        <td>{% if recipe.under_30 == 1: %}
+                    Yes
+                {% else: %}
+                    No
+                {% endif %}
+        </td>
+        <td>{{dashboard.user.first_name}} {{dashboard.user.last_name}}</td>
+        <td>
+            <a href="/dashboard/{{dashboard.id}}">
+                View dashboard
+            </a>
+            {% if session[ 'user_id' ] == recipe.user.id : %} 
+            |
+            <a href="/dashboard/{{dashboard.id}}/update" >
+                Edit
+            </a>
+                |
+            <a href="/dashboard/{{dashboard.id}}/delete" >
+                Delete
+            </a>
+            {% endif %}
+        </td>
+        </tr>
+        {% endfor %}
+        <p>
+            <a href="/dashboard/new">Add a car</a>
+        </p>
+    </table>
+</body>
+</html>
