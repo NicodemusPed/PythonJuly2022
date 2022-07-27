@@ -13,7 +13,7 @@ class Recipe:
         self.instructions = data [ 'instructions' ]
         self.cooked_date = data[ 'cooked_date' ]
         self.under_30 = data[ 'under_30' ]
-        self.user.id = data['user_id' ]
+        self.user_id = data['user_id' ]
         self.created_at = data[ 'created_at' ]
         self.updated_at = data[ 'updated_at' ]
 
@@ -35,7 +35,7 @@ class Recipe:
             user_data = {
                 **row,
                 "created_at" : row[ 'users.created_at' ],
-                "udated_at" : row[ 'users.updated_at' ],
+                "updated_at" : row[ 'users.updated_at' ],
                 "id" : row[ 'users.id' ]
             }
             current_user = User( user_data )
@@ -44,8 +44,8 @@ class Recipe:
         return list_recipes
 
     @staticmethod
-    def get_one_with_user( cls, data ):
-        query = " SELECT * FROM recipes JOIN users ON recipies.user._id = users.id WHERE recipes.id = %(id)s;"
+    def get_one( cls, data ):
+        query = " SELECT * FROM recipes JOIN users ON recipes.user._id = users.id WHERE recipes.id = %(id)s;"
 
         result = connectToMySQL( DATABASE ).query_db( query, data )
 
@@ -89,13 +89,13 @@ class Recipe:
         if data[ 'cooked_date' ] == "":
             flash( "Cooked date must not be empty", "error_recipe_cooked_date" )
             is_valid = False
-        if len( data[ 'name' ] )<3:
+        if len( data[ 'name' ] ) < 3:
             flash( "Name must be at least 3 characters long", "error_recipe_name" )
             is_valid = False
-        if len( data[ 'description' ] )<3:
+        if len( data[ 'description' ] ) < 3:
             flash( "Description must be at least 3 characters long", "error_recipe_description" )
             is_valid = False
-        if len( data[ 'instructions' ] )<3:
+        if len( data[ 'instructions' ] ) < 3:
             flash( "Instructions must be at least 3 characters long", "error_recipe_instructions" )
             is_valid = False
         return is_valid

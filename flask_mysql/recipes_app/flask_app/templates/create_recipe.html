@@ -24,15 +24,15 @@
             {% endfor %}
         </div>
         <div>
-            <label>Description:</label>
-            <testarea type="text" name="description"></testarea>
+            <label for="desc">Description:</label>
+            <textarea id="desc" type="text" name="description"></textarea>
             {% for message in get_flashed_messages( category_filter = [ 'error_recipe_description' ] ) %}
                 {{ message }}
             {% endfor %}
         </div>
         <div>
-            <label>Instructions:</label>
-            <testarea type="text" name="instructions"></testarea>
+            <label for="inst">Instructions:</label>
+            <textarea id="inst" type="text" name="instructions"></textarea>
             {% for message in get_flashed_messages( category_filter = [ 'error_recipe_instructions' ] ) %}
                 {{ message }}
             {% endfor %}
@@ -53,6 +53,7 @@
         </div>
 
             <button type="submit">Submit</button>
+</form>
 </body>
 </html>
 

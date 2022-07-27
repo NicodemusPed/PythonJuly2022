@@ -35,7 +35,7 @@ def display_one( id ):
     data = {
         "id" : id
     }
-    current_recipe = Recipe.get_one_with_user( data )
+    current_recipe = Recipe.get_one( data )
     return render_template( "recipe.html", current_recipe = current_recipe )
 
 @app.route( '/recipes/<int:id>/update' )
@@ -45,7 +45,7 @@ def display_update_recipe( id ):
     data = {
         "id" : id
     }
-    current_recipe = Recipe.get_one_with_user( data )
+    current_recipe = Recipe.get_one( data )
     return render_template( "update_recipe.html", current_recipe = current_recipe )
 
 @app.route( '/recipe/update/<int:id>', methods = [ 'POST' ] )
@@ -66,6 +66,6 @@ def delete_recipe( id ):
         "id" : id
     }
     Recipe.delete_one( data )
-    return redirect( 'recipes' )
+    return redirect( '/recipes' )
 
 

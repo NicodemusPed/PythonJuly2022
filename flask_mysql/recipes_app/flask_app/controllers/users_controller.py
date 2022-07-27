@@ -14,8 +14,8 @@ def display_login():
 def process_registration():
         if User.validate_registration( request.form ) == False:
             return redirect( '/' )
-        user_exists = User.get_one_to_validate_email( request.form )
-        if user_exists != None:
+        user_exists = User.get_one( request.form )
+        if user_exists == True:
             flash( " this email already exists!", "error_registration_email" )
             return redirect( '/' )
         data = {
@@ -33,7 +33,7 @@ def process_registration():
 
 @app.route( '/user/login', methods = [ 'POST' ] ) 
 def process_login():
-    current_user = User.get_one_to_validate_email( request.form )
+    current_user = User.get_one( request.form )
     if current_user !=None:
         if not bcrypt.check_password_hash( current_user.password, request.form[ 'password' ] ):
             flash( "Wrong credentials", "error_login_credentials" )
@@ -41,15 +41,16 @@ def process_login():
 
         session[ 'first_name' ] = current_user.first_name
         session[ 'email' ] =  current_user.email
-        session[ 'user_id' ] =  current_user.user_id
+        session[ 'user_id' ] =  current_user.id
 
-        return redirect( '/recipies' )
+        return redirect( '/recipes' )
     else:
         flash( "Wrong credentials", "error_login_credentials" )
         return redirect( '/' )
 
 @app.route( '/user/logout' )
 def process_logout():
+    session.clear()
     return redirect( '/' )
 
 

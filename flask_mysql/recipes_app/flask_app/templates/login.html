@@ -25,15 +25,15 @@
             {% endfor %}
         </div>
         <div>
-            <label for="email">Email:</label>
-            <input id="email" type="text" name="email" />
+            <label for="email1">Email:</label>
+            <input id="email1" type="text" name="email" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_email' ] ) %}
                 {{ message }}
             {% endfor %}
         </div>
         <div>
-            <label for="password">Password:</label>
-            <input id="password" type="password" name="password" />
+            <label for="password1">Password:</label>
+            <input id="password1" type="password" name="password" />
             {% for message in get_flashed_messages( category_filter=[ 'error_registration_password' ] ) %}
                 { message }}
             {% endfor %}
@@ -47,21 +47,20 @@
         </div>
         <button type="submit">Submit</button>
     </form>
-    <form>
         <h1>Login</h1>
-        <form method ="POST" action="/user/login"></form>
+        <form method ="POST" action="/user/login">
         <div>
-            <label>Email:</label>
-            <input type="text" name="email" />
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="email" />
         </div>
         <div>
-            <label>Password:</label>
-            <input type="password" name="password" />
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password" />
         </div>
         {% for message in get_flashed_messages( category_filter=[ 'error_login_credentials' ] ) %}
             {{ message }}
         {% endfor %}
-        <button>Submit</button>
+        <button type="submit" >Submit</button>
     </form>
 
 </body>

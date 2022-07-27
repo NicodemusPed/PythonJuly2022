@@ -39,9 +39,9 @@
             <a href="/recipes/{{recipe.id}}">
                 View recipe
             </a>
-            {% if session[ 'used_id' ] == recipe.user.id : %} 
+            {% if session[ 'user_id' ] == recipe.user.id : %} 
             |
-            <a href="/recipes/{{recipe.id}}/updatet" >
+            <a href="/recipes/{{recipe.id}}/update" >
                 Edit
             </a>
                 |
